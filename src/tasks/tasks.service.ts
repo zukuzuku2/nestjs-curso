@@ -1,28 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import { CreateTasks } from './dto/create.task.dto';
 
 @Injectable()
 export class TasksService {
-  task = [
-    {
-      id: 1,
-      task: 'task1',
-    },
-    {
-      id: 2,
-      task: 'task2',
-    },
-    {
-      id: 3,
-      task: 'task3',
-    },
-  ];
+  private tasks: any[] = [];
 
   getTasks() {
-    return this.task;
+    return this.tasks;
   }
 
-  postTasks() {
-    return 'Creando Tareas';
+  getOneTask(id: number) {
+    return this.tasks.find((task) => task.id === id);
+  }
+
+  postTasks(task: CreateTasks) {
+    return this.tasks.push({
+      ...task,
+      id: this.tasks.length + 1,
+    });
   }
 
   putTasks() {

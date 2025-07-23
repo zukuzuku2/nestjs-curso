@@ -11,19 +11,19 @@ export class UsersController {
   }
 
   @Post()
-  createTasks() {
+  createUsers() {
     return this.usersService.postUsers();
   }
   @Put() // --> Actualiza todo el objeto
-  updateTasks() {
+  updateUsers() {
     return this.usersService.putUsers();
   }
   @Delete()
-  deleteTasks() {
+  deleteUsers() {
     return this.usersService.eliminarUsers();
   }
   @Patch() // --> Actualiza parcialmente un objeto
-  updateTasksStatus() {
+  updateUsersStatus() {
     return this.usersService.ParcharUsers();
   }
 }
