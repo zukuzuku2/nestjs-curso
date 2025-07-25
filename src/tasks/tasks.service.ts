@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTasks } from './dto/create.task.dto';
+import { CreateTasksDto } from './dto/create.task.dto';
 
 @Injectable()
 export class TasksService {
@@ -13,11 +13,25 @@ export class TasksService {
     return this.tasks.find((task) => task.id === id);
   }
 
-  postTasks(task: CreateTasks) {
-    return this.tasks.push({
-      ...task,
+  postTasks(task: CreateTasksDto) {
+    /* Para que createTasks devuelva la tarea creada, necesitarías modificar el método postTasks en tu servicio para que:
+
+  1. Cree la nueva tarea con un ID */
+
+    const newTask = {
+      ...this.tasks,
       id: this.tasks.length + 1,
+    };
+
+    /*     2. Añada la tarea al array */
+
+    this.tasks.push({
+      newTask,
     });
+
+    // 3. Devuelva la tarea creada, no el resultado de push()
+
+    return newTask;
   }
 
   putTasks() {
