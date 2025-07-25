@@ -1,61 +1,121 @@
 # Curso NestJS
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descripción
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Proyecto de aprendizaje de NestJS con módulos de autenticación, usuarios, proyectos y tareas.
 
-## Description
+## Requisitos previos para configurar en otro PC
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### 1. Instalar Node.js y npm
+- Descargar e instalar Node.js desde [nodejs.org](https://nodejs.org/)
+- Versión recomendada: Node.js 18.x o superior
+- npm se instala automáticamente con Node.js
 
-## Project setup
+### 2. Instalar Git
+- Descargar e instalar Git desde [git-scm.com](https://git-scm.com/)
+- Configurar Git con tu usuario:
+  ```bash
+  git config --global user.name "Tu Nombre"
+  git config --global user.email "tu.email@ejemplo.com"
+  ```
 
+### 3. Clonar el repositorio
 ```bash
-$ npm install
+git clone <URL_DEL_REPOSITORIO>
+cd nestjs
 ```
 
-## Compile and run the project
-
+### 4. Configurar Git para line endings (Windows)
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git config --global core.autocrlf true
 ```
 
-## Run tests
+## Configuración del proyecto
+
+### 1. Instalar dependencias
+```bash
+npm install
+```
+
+### 2. Verificar que todo esté instalado correctamente
+```bash
+npm run build
+```
+
+## Ejecutar el proyecto
 
 ```bash
-# unit tests
-$ npm run test
+# modo desarrollo
+npm run start
 
-# e2e tests
-$ npm run test:e2e
+# modo desarrollo con recarga automática (recomendado)
+npm run start:dev
 
-# test coverage
-$ npm run test:cov
+# modo producción
+npm run start:prod
+```
+
+## Estructura del proyecto
+
+```
+src/
+├── auth/           # Módulo de autenticación
+├── users/          # Módulo de usuarios
+├── projects/       # Módulo de proyectos
+├── tasks/          # Módulo de tareas
+│   ├── dto/        # Data Transfer Objects
+│   ├── tasks.controller.ts
+│   ├── tasks.service.ts
+│   └── tasks.module.ts
+├── app.module.ts    # Módulo principal
+└── main.ts         # Punto de entrada
+```
+
+## Endpoints disponibles
+
+### Tasks
+- `GET /tasks` - Obtener todas las tareas
+- `GET /tasks/:id` - Obtener una tarea por ID
+- `POST /tasks` - Crear una nueva tarea
+- `PUT /tasks` - Actualizar tareas
+- `DELETE /tasks` - Eliminar tareas
+- `PATCH /tasks` - Actualizar estado de tareas
+
+## Tecnologías utilizadas
+
+- **NestJS** - Framework de Node.js
+- **TypeScript** - Lenguaje de programación
+- **class-validator** - Validación de datos
+- **class-transformer** - Transformación de objetos
+- **Jest** - Testing framework
+- **ESLint** - Linter
+- **Prettier** - Formateador de código
+
+## Ejecutar tests
+
+```bash
+# tests unitarios
+npm run test
+
+# tests e2e
+npm run test:e2e
+
+# cobertura de tests
+npm run test:cov
+```
+
+## Scripts disponibles
+
+```bash
+npm run build          # Compilar el proyecto
+npm run format         # Formatear código con Prettier
+npm run start          # Iniciar en modo desarrollo
+npm run start:dev      # Iniciar con recarga automática
+npm run start:debug    # Iniciar en modo debug
+npm run start:prod     # Iniciar en modo producción
+npm run lint           # Ejecutar ESLint
+npm run test           # Ejecutar tests
+npm run test:watch     # Ejecutar tests en modo watch
 ```
 
 ## Deployment
