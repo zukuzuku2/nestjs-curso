@@ -8,6 +8,8 @@ import {
   UsePipes,
   ValidationPipe,
   Body,
+  Param,        // Para obtener parámetros de la URL
+  ParseBoolPipe, // NUEVO: Pipe que convierte string a boolean automáticamente
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUsersDto } from './dto/create.user.dto';
@@ -24,10 +26,18 @@ export class UsersController {
     return this.usersService.getUsers();
   }
 
-  // POST /users - Crea un nuevo usuario
+  // NUEVO: GET /users/active/:status - Verifica si un usuario está activo
+  @Get('active/:status')
+  isUserActive(@Param('status', ParseBoolPipe) status: boolean) {
+    // ParseBoolPipe convierte 'true'/'false' string a boolean automáticamente
+    return this.usersService.isUserActive(status);
+  }
+
+  // POST /users - Crea un nuevo usuario con validación
   @Post()
-  @UsePipes(new ValidationPipe({ whitelist: true }))
+  @UsePipes(new ValidationPipe({ whitelist: true })) // NUEVO: whitelist elimina propiedades no definidas en el DTO
   createUsers(@Body() user: CreateUsersDto) {
+    // NUEVO: Usa el DTO para validar datos
     return this.usersService.postUsers(user);
   }
 

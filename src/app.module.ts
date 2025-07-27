@@ -8,14 +8,14 @@ import { ErrorModule } from './error/error.module';
 
 // Decorador que define este como el módulo principal de la aplicación
 @Module({
-  // Importa todos los módulos de la aplicación (proyectos, tareas, auth, usuarios)
+  // Importa todos los módulos de la aplicación
   imports: [
-    ProjectsModule,
-    TasksModule,
-    AuthModule,
-    UsersModule,
-    NotFoundModule,
-    ErrorModule,
+    ProjectsModule,  // Módulo de proyectos (vacío)
+    TasksModule,     // Módulo de tareas (completo con CRUD)
+    AuthModule,      // Módulo de autenticación (vacío)
+    UsersModule,     // Módulo de usuarios (con CRUD y validación)
+    NotFoundModule,  // NUEVO: Módulo para páginas 404
+    ErrorModule,     // NUEVO: Módulo para errores 500
   ],
 })
 export class AppModule {}

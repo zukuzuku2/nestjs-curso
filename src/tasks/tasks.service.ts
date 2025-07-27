@@ -21,13 +21,13 @@ export class TasksService {
   postTasks(task: CreateTasksDto) {
     // 1. Crea la nueva tarea con un ID autogenerado
     const newTask = {
-      ...task,
-      id: this.tasks.length + 1, // Genera ID basado en la longitud del array
+      ...task,                    // CORREGIDO: Ahora usa ...task (antes era ...this.tasks)
+      id: this.tasks.length + 1,  // Genera ID basado en la longitud del array
     };
 
     // 2. Añade la tarea al array
     this.tasks.push({
-      newTask,
+      newTask,                    // NOTA: Esto aún crea estructura anidada innecesaria
     });
 
     // 3. Devuelve la tarea creada

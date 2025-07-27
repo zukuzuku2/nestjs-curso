@@ -34,7 +34,7 @@ export class TasksController {
 
   // POST /tasks - Crea una nueva tarea con validación
   @Post()
-  @UsePipes(new ValidationPipe({ whitelist: true })) // Aplica validación automática usando el DTO
+  @UsePipes(new ValidationPipe({ whitelist: true })) // MEJORADO: whitelist elimina propiedades no definidas en el DTO
   createTasks(@Body() task: CreateTasksDto) {
     return this.taskService.postTasks(task);
   }
